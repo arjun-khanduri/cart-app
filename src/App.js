@@ -57,6 +57,14 @@ class App extends React.Component {
     })
     return count;
   }
+  totalPrice = () => {
+    const { products } = this.state;
+    let cartTotal = 0;
+    products.forEach((item) => {
+      cartTotal += item.price * item.qty;
+    })
+    return cartTotal;
+  }
   render() {
     const { products } = this.state;
     return (
@@ -69,6 +77,7 @@ class App extends React.Component {
           onDecreaseQuantity={this.decreaseQty}
           onDeleteProduct={this.deleteProduct}
         />
+        <div style={{ padding: 10, fontSize: 20 }}><strong>Total Price:</strong> {this.totalPrice()}</div>
       </div>
     );
   }
