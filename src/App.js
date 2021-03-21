@@ -9,7 +9,8 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      products: []
+      products: [],
+      loading: true
     }
   }
 
@@ -27,7 +28,8 @@ class App extends React.Component {
       })
 
       this.setState({
-        products: products
+        products: products,
+        loading: false
       })
     });
    }
@@ -68,7 +70,7 @@ class App extends React.Component {
     return cartTotal;
   }
   render() {
-    const { products } = this.state;
+    const { products, loading } = this.state;
     return (
       <div className="App">
         <Navbar count={this.getCartCount()} />
@@ -79,6 +81,7 @@ class App extends React.Component {
           onDecreaseQuantity={this.decreaseQty}
           onDeleteProduct={this.deleteProduct}
         />
+        {loading && <img src="https://media3.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="Loading products..." />}
         <div style={{ padding: 10, fontSize: 20 }}><strong>Total Price:</strong> {this.totalPrice()}</div>
       </div>
     );
