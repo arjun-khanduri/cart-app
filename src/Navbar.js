@@ -28,7 +28,7 @@ const Navbar = (props) => {
         return (
             <div style={styles.nav}>
                 <div style={styles.cartIconContainer}>
-                    <img style={styles.cartIcon} src='https://www.flaticon.com/svg/vstatic/svg/1170/1170678.svg?token=exp=1615914858~hmac=0dbf718891f49cf436e263bde9480d81' alt='cart-icon' />
+                    <img style={styles.cartIcon} src='https://www.flaticon.com/svg/vstatic/svg/1170/1170678.svg?token=exp=1616349626~hmac=c0b83854a05e9e75872239fcb568767c' alt='cart-icon' />
                     <span style={styles.cartCount}>{props.count}</span>
                 </div>
             </div>
