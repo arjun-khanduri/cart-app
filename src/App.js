@@ -20,8 +20,14 @@ class App extends React.Component {
      .get()
      .then((snapshot) => {
       console.log(snapshot);
-      snapshot.docs.map((doc) => {
-        console.log(doc.data());
+      const products = snapshot.docs.map((doc) => {
+        const data = doc.data();
+        data['id'] = doc.id;
+        return data;
+      })
+
+      this.setState({
+        products: products
       })
     });
    }
