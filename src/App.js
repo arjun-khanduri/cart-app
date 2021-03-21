@@ -1,35 +1,31 @@
 import React from 'react';
 import Cart from './Cart';
 import Navbar from './Navbar';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
+
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      products: [
-        {
-          price: 99,
-          title: 'Watch',
-          qty: 1,
-          img: '',
-          id: 1
-        },
-        {
-          price: 999,
-          title: 'Mobile Phone',
-          qty: 10,
-          img: '',
-          id: 2
-        },
-        {
-          price: 999,
-          title: 'Laptop',
-          qty: 4,
-          img: '',
-          id: 3
-        }
-      ]
+      products: []
     }
   }
+
+   componentDidMount () {
+     firebase
+     .firestore()
+     .collection('products')
+     .get()
+     .then((snapshot) => {
+      console.log(snapshot);
+      snapshot.docs.map((doc) => {
+        console.log(doc.data());
+      })
+    });
+   }
+
   increaseQty = (product) => {
     const { products } = this.state;
     const index = products.indexOf(product);
