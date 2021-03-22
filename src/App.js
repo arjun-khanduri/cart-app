@@ -4,6 +4,7 @@ import Navbar from './Navbar';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
+import loadingIcon from './giphy.gif';
 
 class App extends React.Component {
   constructor() {
@@ -98,7 +99,7 @@ class App extends React.Component {
           onDecreaseQuantity={this.decreaseQty}
           onDeleteProduct={this.deleteProduct}
         />
-        {loading && <img src="https://media3.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="Loading products..." />}
+        {loading && <img src={loadingIcon} alt="Loading products..." />}
         <div style={{ padding: 10, fontSize: 20 }}><strong>Total Price:</strong> {this.totalPrice()}</div>
       </div>
     );
